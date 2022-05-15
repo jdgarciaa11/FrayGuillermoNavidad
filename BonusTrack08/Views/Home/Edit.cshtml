@@ -1,0 +1,29 @@
+﻿@model BonusTrack08.Models.Entities.clsPlanta
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h1>@Model.nombre</h1>
+    <form method="post">
+        @Html.LabelFor(m=>m.nombre) <br />
+        @Html.DisplayFor(m=>m.nombre)<br />
+        @Html.LabelFor(m=>m.detalles)<br />
+        @Html.DisplayFor(m=>m.detalles)<br />
+        @Html.LabelFor(m=>m.precio)<br />
+        @if (@Model.precio == 0)
+        {
+          @Html.TextBoxFor(m=>m.precio)<br />
+          <input type="submit" value="Editar precio">
+        } else
+        {
+          @Html.DisplayFor(m=>m.precio)<br />
+        }
+    </form>
+    @Html.ActionLink("Volver","Index","Home")
+</body>
+</html>

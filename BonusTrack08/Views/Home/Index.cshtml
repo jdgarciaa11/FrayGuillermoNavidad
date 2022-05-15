@@ -1,0 +1,48 @@
+﻿@model BonusTrack08.Models.ViewModels.clsIndexVM
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post">
+        <label for="nombre">Elige una categoria:</label>
+        <select name="idCategoria">
+            @foreach (var categoria in Model.ListadoCategoria)
+            {
+                @if (@Model.ListaPlantaCategoria != null && @categoria.id == @Model.IdCategoriaSeleccionada)
+                {
+                    <option selected="true" value="@categoria.id">@categoria.nombre</option>
+                } else
+                {
+                   <option value="@categoria.id">@categoria.nombre</option> 
+                }
+                
+            }
+        </select>
+        <input type="submit" value="Ver Plantas">
+    </form>
+    @if (@Model.ListaPlantaCategoria != null)
+    {
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+        </tr>
+    </thead>
+        @foreach (var planta in Model.ListaPlantaCategoria)
+        {
+            <tr>
+                <td>@planta.nombre</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = planta.id }) </td>
+            </tr>
+        }
+    </table>
+    }
+</body>
+</html>
